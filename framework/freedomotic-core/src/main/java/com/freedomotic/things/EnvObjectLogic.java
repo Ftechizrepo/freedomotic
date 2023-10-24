@@ -19,6 +19,7 @@
  */
 package com.freedomotic.things;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -405,7 +406,7 @@ public class EnvObjectLogic {
      */
     @RequiresPermissions("objects:create")
     public final void setRandomLocation() {
-    	Random random = new Random();
+    	Random random = new SecureRandom();
         int randomX = (random.nextInt() * environmentRepository.findAll().get(0).getPojo().getWidth());
         int randomY = (random.nextInt() * environmentRepository.findAll().get(0).getPojo().getHeight());
         setLocation(randomX, randomY);
