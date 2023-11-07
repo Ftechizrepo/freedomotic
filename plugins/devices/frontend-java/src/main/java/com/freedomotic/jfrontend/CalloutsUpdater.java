@@ -20,6 +20,7 @@
 package com.freedomotic.jfrontend;
 
 import java.awt.Color;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -98,7 +99,7 @@ public class CalloutsUpdater {
 
         // NOTE: Usually this should be a field rather than a method
         // variable so that it is not re-seeded every call.
-        Random rand = new Random();
+        Random rand = new SecureRandom();
 
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive

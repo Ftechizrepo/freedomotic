@@ -42,6 +42,7 @@ import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -1293,7 +1294,7 @@ public class Renderer extends Drawer implements MouseListener, MouseMotionListen
     private int random(int min, int max) {
         // NOTE: Usually this should be a field rather than a method
         // variable so that it is not re-seeded every call.
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         // nextInt is normally exclusive of the top value,
         // so add 1 to make it inclusive
         return rand.nextInt((max - min) + 1) + min;

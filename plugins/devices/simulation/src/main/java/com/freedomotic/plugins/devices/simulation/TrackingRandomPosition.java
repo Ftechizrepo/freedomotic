@@ -28,6 +28,7 @@ import com.freedomotic.reactions.Command;
 import com.freedomotic.things.EnvObjectLogic;
 import com.freedomotic.things.GenericPerson;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 /**
@@ -52,8 +53,8 @@ public class TrackingRandomPosition extends Protocol {
         int x;
         int y;
 
-        Random rx = new Random();
-        Random ry = new Random();
+        Random rx = new SecureRandom();
+        Random ry = new SecureRandom();
         x = rx.nextInt(getApi().environments().findAll().get(0).getPojo().getWidth());
         y = ry.nextInt(getApi().environments().findAll().get(0).getPojo().getHeight());
 
