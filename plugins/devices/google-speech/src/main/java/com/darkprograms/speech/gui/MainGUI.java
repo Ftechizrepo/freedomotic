@@ -18,6 +18,7 @@ import com.darkprograms.speech.util.AePlayWave;
 import com.freedomotic.googlespeech.GoogleSpeech;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.sampled.AudioFileFormat;
@@ -228,7 +229,7 @@ public class MainGUI extends javax.swing.JFrame {
 
     private void startRecognitionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startRecognitionActionPerformed
         try {
-            temp = File.createTempFile("audio-file", ".tmp");
+            temp = Files.createTempFile("audio-file", ".tmp").toFile();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

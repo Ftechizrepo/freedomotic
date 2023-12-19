@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -80,9 +81,9 @@ interface FTD2XX extends Library {
 
             if (in != null) {
                 try {
-                    fileOut = File.createTempFile(Platform.isMac() ? "lib" : ""
+                    fileOut = Files.createTempFile(Platform.isMac() ? "lib" : ""
                             + "ftd2xx", Platform.isWindows() ? ".dll"
-                            : Platform.isLinux() ? ".so" : ".dylib");
+                            : Platform.isLinux() ? ".so" : ".dylib").toFile();
                     fileOut.deleteOnExit();
 
                     fos = new FileOutputStream(fileOut);
