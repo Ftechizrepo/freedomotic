@@ -85,7 +85,7 @@ public class Synthesiser {
 
 		String languageCode = this.languageCode;//Ensures retention of language settings if set to auto
 
-		if(languageCode == null || languageCode.equals("") || languageCode.equalsIgnoreCase("auto")){
+		if(languageCode == null || "".equals(languageCode) || "auto".equalsIgnoreCase(languageCode)){
 			try{
 				languageCode = detectLanguage(synthText);//Detects language
 				if(languageCode == null){

@@ -99,7 +99,7 @@ public class ThreadedBTClientHandler extends Thread {
             } else {  // there was some input
                 pluginRef.pluginLog().info("From BT client " + clientName + " --> \"" + line + "\"");
                 pluginRef.sendCommand(line);
-                if (line.trim().equals("bye$$")) {
+                if ("bye$$".equals(line.trim())) {
                     isRunning = false;
                 }
             }

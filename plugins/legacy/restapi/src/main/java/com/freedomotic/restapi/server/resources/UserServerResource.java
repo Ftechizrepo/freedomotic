@@ -35,7 +35,7 @@ public class UserServerResource extends ServerResource {
 
     @Override
     public void doInit() {
-        if (((String) getRequest().getAttributes().get("useraction")).equals("logout")) {
+        if ("logout".equals(((String) getRequest().getAttributes().get("useraction")))) {
             getRequest().getClientInfo().setAuthenticated(false);
             getResponse().setStatus(Status.CLIENT_ERROR_UNAUTHORIZED);
         }

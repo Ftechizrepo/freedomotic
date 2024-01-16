@@ -235,7 +235,7 @@ class ClientStorageInMemory implements ClientStorage {
         //if is a string returns 0 to match any value with "x"
         try {
             int value;
-            if (properties.getProperty(key).equalsIgnoreCase("x")) {
+            if ("x".equalsIgnoreCase(properties.getProperty(key))) {
                 value = 0;
             } else {
                 value = Integer.parseInt(properties.getProperty(key, Integer.toString(Integer.MAX_VALUE)));

@@ -108,7 +108,7 @@ public class Twilight extends Protocol {
     @Override
     protected void onCommand(Command c) throws IOException, UnableToExecuteException {
         String command = c.getProperty("command");
-        if (command.equals("Update Twilight Data")) {
+        if ("Update Twilight Data".equals(command)) {
             try {
                 provider.updateData();
                 setDescription("Sunrise: " + provider.getNextSunrise().toLocalTime() + " Sunset: " + provider.getNextSunset().toLocalTime());

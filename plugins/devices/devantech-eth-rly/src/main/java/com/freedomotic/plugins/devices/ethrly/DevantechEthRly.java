@@ -260,7 +260,7 @@ public class DevantechEthRly extends Protocol {
         LOG.info("Sending Devantech Eth-Rly protocol read event for object address '{}'. It's readed status is {}", address, status);
         //building the event
         ProtocolRead event = new ProtocolRead(this, "devantech-eth-rly", address); //ALIAS:RELAYLINE
-        if (status.equals("0")) {
+        if ("0".equals(status)) {
             event.addProperty("isOn", "false");
         } else {
             event.addProperty("isOn", "true");

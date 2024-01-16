@@ -149,7 +149,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat("*");
 		frameOpen = frameOpen.concat(where);
 		//per togliere l'asterisco finale
-	    if (!when.equals("")){
+	    if (!"".equals(when)){
 	    	frameOpen = frameOpen.concat("*");
 	    }	  
 	    frameOpen = frameOpen.concat(when);
@@ -190,7 +190,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat(where);
 		frameOpen = frameOpen.concat("#");
 		
-	  if (lev.equals("")){
+	  if ("".equals(lev)){
 	  	frameOpen = frameOpen.concat("4");
 		//strcat(frameOpen, "4");
 	  }else{
@@ -200,7 +200,7 @@ public class OWN implements InterfaceOpenWebNet{
 	  frameOpen = frameOpen.concat("#");
 	  frameOpen = frameOpen.concat(interfac);
 		//per togliere l'asterisco finale
-	  if (when.equals("")){
+	  if ("".equals(when)){
 	  	frameOpen = frameOpen.concat("*");
 	  }
 	  frameOpen = frameOpen.concat("when");
@@ -268,7 +268,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat(where);
 		frameOpen = frameOpen.concat("#");
 		
-		if (lev.equals("")){
+		if ("".equals(lev)){
 		    frameOpen = frameOpen.concat("4");
 		}else{
 		    frameOpen = frameOpen.concat(lev);
@@ -310,7 +310,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat(where);
 
 		//per togliere l'asterisco finale
-        if (!dimension.equals("")){
+        if (!"".equals(dimension)){
             frameOpen = frameOpen.concat("*");
         }            
         frameOpen = frameOpen.concat(dimension);
@@ -347,7 +347,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat(where);
 		frameOpen = frameOpen.concat("#");
 		
-		if (lev.equals("")){
+		if ("".equals(lev)){
 		    frameOpen = frameOpen.concat("4");
 		}else{
 		    frameOpen = frameOpen.concat(lev);
@@ -355,7 +355,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat("#");
 		frameOpen = frameOpen.concat(interfac);
 //		per togliere l'asterisco finale
-        if (!dimension.equals("")){
+        if (!"".equals(dimension)){
             frameOpen = frameOpen.concat("*");
         }            
         frameOpen = frameOpen.concat(dimension);
@@ -436,7 +436,7 @@ public class OWN implements InterfaceOpenWebNet{
 		frameOpen = frameOpen.concat("*");
 		frameOpen = frameOpen.concat(where);
 		frameOpen = frameOpen.concat("#");
-		if (lev.equals("")){
+		if ("".equals(lev)){
 		    frameOpen = frameOpen.concat("4");
 		}else{
 		    frameOpen = frameOpen.concat(lev);
@@ -1069,7 +1069,7 @@ public class OWN implements InterfaceOpenWebNet{
 		int i = 0;
 		
 	 	// DOVE
-		if(!dove.equals("")){
+		if(!"".equals(dove)){
 			if(dove.charAt(0) == '#'){
 				sup = dove.substring(1, dove.length());
 				//sprintf(sup, "%s", dove+1);

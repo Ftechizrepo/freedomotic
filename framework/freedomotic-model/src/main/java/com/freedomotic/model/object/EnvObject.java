@@ -363,8 +363,8 @@ public class EnvObject implements Serializable {
             //otherwise are the same object despite of the different name
             if ((this.getPhisicalAddress().equalsIgnoreCase(other.getPhisicalAddress()))
                     && (this.getProtocol().equalsIgnoreCase(other.getProtocol()))) {
-                return (!this.getPhisicalAddress().equalsIgnoreCase(UNKNOWN_VALUE))
-                        && (!this.getProtocol().equalsIgnoreCase(UNKNOWN_VALUE));
+                return (!UNKNOWN_VALUE.equalsIgnoreCase(this.getPhisicalAddress()))
+                        && (!UNKNOWN_VALUE.equalsIgnoreCase(this.getProtocol()));
             } else {
                 return false;
             }
@@ -410,7 +410,7 @@ public class EnvObject implements Serializable {
         StringBuilder tagString = new StringBuilder();
         Boolean morethanone = false;
         for (String tag : getTagsList()) {
-            if (!tag.equals("")) {
+            if (!"".equals(tag)) {
                 if (morethanone) {
                     tagString.append(",");
                 }

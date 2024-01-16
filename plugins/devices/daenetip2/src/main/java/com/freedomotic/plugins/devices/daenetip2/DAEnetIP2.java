@@ -253,7 +253,7 @@ public class DAEnetIP2 extends Protocol {
 
         address = c.getProperty("address").split(ADDRESS_DELIMITER);
         Board board = (Board) devices.get(address[0]);
-        if (address[1].substring(0, 1).equalsIgnoreCase("P3")) {
+        if ("P3".equalsIgnoreCase(address[1].substring(0, 1))) {
             OID_REQUEST = P3_OID + "." + address[1].charAt(address[1].length() - 1) + ".0";
         } else {
             OID_REQUEST = P5_OID + "." + address[1].charAt(address[1].length() - 1) + ".0";

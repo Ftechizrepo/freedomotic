@@ -261,7 +261,7 @@ public class Tcw122bcm extends Protocol {
             LOG.info("Freedomotic sends the command " + url);
             URLConnection urlConnection = url.openConnection();
             // if required set the authentication
-            if (HTTP_AUTHENTICATION.equalsIgnoreCase("true")) {
+            if ("true".equalsIgnoreCase(HTTP_AUTHENTICATION)) {
                 urlConnection.setRequestProperty("Authorization", "Basic " + authStringEnc);
             }
             InputStream is = urlConnection.getInputStream();

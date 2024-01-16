@@ -137,7 +137,7 @@ public final class HarvesterProtocol extends Protocol {
         if (isRunning()) {
             if (c.getProperty("command") == null || c.getProperty("command").isEmpty() || c.getProperty("command").equalsIgnoreCase("SAVE-DATA")) {
                 saveData(c);
-            } else if (c.getProperty("command").equals("EXTRACT-DATA")) { //extract data
+            } else if ("EXTRACT-DATA".equals(c.getProperty("command"))) { //extract data
                 UsageDataFrame data = extractData(c);
                 sendPoints(data, c);
             }
@@ -173,14 +173,14 @@ public final class HarvesterProtocol extends Protocol {
                 q = em.createNamedQuery("powered");
 
                 String date = c.getProperty("startDate");
-                if (date == null || date.isEmpty() || date.equals("CURRENT_DATE")) {
+                if (date == null || date.isEmpty() || "CURRENT_DATE".equals(date)) {
                     q.setParameter("startDate", new Date(0));
                 } else {
                     q.setParameter("startDate", new Date(Long.parseLong(date)));
                 }
 
                 date = c.getProperty("stopDate");
-                if (date == null || date.isEmpty() || date.equals("CURRENT_DATE")) {
+                if (date == null || date.isEmpty() || "CURRENT_DATE".equals(date)) {
                     q.setParameter("stopDate", new Date());
                 } else {
                     q.setParameter("stopDate", new Date(Long.parseLong(date)));
@@ -189,13 +189,13 @@ public final class HarvesterProtocol extends Protocol {
                 q.setParameter("uuid", id.trim());
                 q.setParameter("protocol", "%");
 
-            } else if (type.equals("tag")) {
+            } else if ("tag".equals(type)) {
                 Collection<EnvObjectLogic> objs = getApi().things().findAll();
 
             } else if (type.startsWith("prot")) {
                 Collection<EnvObjectLogic> objs = getApi().things().findByProtocol(id);
 
-            } else if (type.equals("room")) {
+            } else if ("room".equals(type)) {
                 // to be implemented
             } else if (type.startsWith("env")) {
                 Collection<EnvObjectLogic> objs = getApi().things().findByEnvironment(id);
@@ -264,7 +264,7 @@ public final class HarvesterProtocol extends Protocol {
             for (Entry<Object, Object> entry : c.getProperties().entrySet()) {
                 String key = (String) entry.getKey();
                 Matcher fits = pat.matcher(key);
-                if (fits.find() && !fits.group(1).equals("data")) { //exclude unwanted behaviors
+                if (fits.find() && !"data".equals(fits.group(1))) { //exclude unwanted behaviors
                     UsageData item2 = item.clone();
                     item2.setObjBehavior(fits.group(1));
                     item2.setObjValue((String) entry.getValue());

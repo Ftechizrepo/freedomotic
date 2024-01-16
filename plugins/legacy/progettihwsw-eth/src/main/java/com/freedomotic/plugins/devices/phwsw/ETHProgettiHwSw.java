@@ -228,14 +228,14 @@ public class ETHProgettiHwSw extends Protocol {
         ProtocolRead event = new ProtocolRead(this, "SNT084Eth8R8I", address); //IP:PORT:RELAYLINE
         // relay lines - status=0 -> off; status=1 -> on
         if (board.getLineToMonitorize().equalsIgnoreCase("led")) {
-            if (status.equals("0")) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
             }
         } else // digital inputs - status=up -> off; status=dn -> on
         if (board.getLineToMonitorize().equalsIgnoreCase("btn")) {
-            if (status.equalsIgnoreCase("up")) {
+            if ("up".equalsIgnoreCase(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
@@ -243,7 +243,7 @@ public class ETHProgettiHwSw extends Protocol {
         } else {
             // analog inputs - status=0 -> off; status>0 -> on
             if (board.getLineToMonitorize().equalsIgnoreCase("ptn")) {
-                if (status.equalsIgnoreCase("0")) {
+                if ("0".equalsIgnoreCase(status)) {
                     event.addProperty("isOn", "false");
                 } else {
                     event.addProperty("isOn", "true");
@@ -321,20 +321,20 @@ public class ETHProgettiHwSw extends Protocol {
         String behavior = null;
         String relay = null;
 
-        if (c.getProperty("command").equals("RELAY")) {
+        if ("RELAY".equals(c.getProperty("command"))) {
             // convert relay number (integer) into hexadecimal value (string) for board compatibility
             relay = HexIntConverter.convert(Integer.parseInt(address[2]) - 1);
             // convert freedom behavior(on/off) to board behavior (1/0)
-            if (c.getProperty("behavior").equals("on")) {
+            if ("on".equals(c.getProperty("behavior"))) {
                 behavior = "1";
             }
-            if (c.getProperty("behavior").equals("off")) {
+            if ("off".equals(c.getProperty("behavior"))) {
                 behavior = "0";
             }
             page = "forms.htm?led" + relay + "=" + behavior;
         }
 
-        if (c.getProperty("command").equals("TOGGLE")) {
+        if ("TOGGLE".equals(c.getProperty("command"))) {
             // mapping relay line -> protocol
             relay = address[2]; // toggle range from 1
             int time = Integer.parseInt(c.getProperty("time-in-ms"));

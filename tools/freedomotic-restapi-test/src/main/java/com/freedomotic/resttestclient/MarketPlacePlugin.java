@@ -161,18 +161,18 @@ public class MarketPlacePlugin {
             reader.beginObject();
             while (reader.hasNext()) {
                 String name = reader.nextName();
-                if (name.equals("title")) {
+                if ("title".equals(name)) {
                     title = reader.nextString();
-                } else if (name.equals("path")) {
+                } else if ("path".equals(name)) {
                     path = reader.nextString();
-                } else if (name.equals("field_file")) {
+                } else if ("field_file".equals(name)) {
                     reader.beginArray();
                     reader.beginObject();
                     while (reader.hasNext()) {
                         String name2 = reader.nextName();
-                        if (name2.equals("filename")) {
+                        if ("filename".equals(name2)) {
                             filename = reader.nextString();
-                        } else if (name2.equals("filepath")) {
+                        } else if ("filepath".equals(name2)) {
                             filepath = reader.nextString();
                         } else {
                             reader.skipValue();

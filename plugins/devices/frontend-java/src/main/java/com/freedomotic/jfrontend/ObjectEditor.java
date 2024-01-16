@@ -688,8 +688,8 @@ public class ObjectEditor
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt)    {//GEN-FIRST:event_btnOkActionPerformed
 
-        if ((!txtProtocol.getSelectedItem().toString().equals(""))
-                && (!txtAddress.getText().equals(""))) {
+        if ((!"".equals(txtProtocol.getSelectedItem().toString()))
+                && (!"".equals(txtAddress.getText()))) {
             EnvObject pojo = object.getPojo();
             pojo.setProtocol(txtProtocol.getSelectedItem().toString());
             pojo.setPhisicalAddress(txtAddress.getText());

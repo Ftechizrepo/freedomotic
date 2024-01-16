@@ -68,7 +68,7 @@ public class Mqtt implements MqttCallback {
         connectionOptions.setCleanSession(Boolean.parseBoolean(setCleanSession));
         connectionOptions.setKeepAliveInterval(setKeepAliveInterval);
         // authentication requires username and password
-        if (authenticationEnabled.equalsIgnoreCase("true")) {
+        if ("true".equalsIgnoreCase(authenticationEnabled)) {
             connectionOptions.setUserName(username);
             connectionOptions.setPassword(password.toCharArray());
         }

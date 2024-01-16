@@ -107,7 +107,7 @@ public class ArduinoUSB extends Protocol {
         String receivedStatus = receivedMessage[1];
 
         ProtocolRead event = new ProtocolRead(this, "arduinousb", receivedAddress);
-        if (receivedStatus.equalsIgnoreCase("on")) {
+        if ("on".equalsIgnoreCase(receivedStatus)) {
             event.addProperty("isOn", "true");
         } else {
             event.addProperty("isOn", "false");

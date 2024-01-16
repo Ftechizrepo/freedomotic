@@ -283,7 +283,7 @@ public class Zibase extends Protocol {
         LOG.error("Sending Zibase protocol read event for object address '" + address + "'. It's readed status is " + status);
         //building the event
         ProtocolRead event = new ProtocolRead(this, "zibase", address); //object address ALIAS:X10ADDRESS:PROTOCOL
-        if (status.equals("0")) {
+        if ("0".equals(status)) {
             event.addProperty("isOn", "false");
         } else {
             event.addProperty("isOn", "true");
@@ -507,7 +507,7 @@ public class Zibase extends Protocol {
                 String delimiter = configuration.getProperty("address-delimiter");
                 address = objectAddress.split(delimiter);
                 if (address.length == 3) {
-                    if (address[2].equalsIgnoreCase("ZWAVE")) {
+                    if ("ZWAVE".equalsIgnoreCase(address[2])) {
                         ZwaveMap.put(address[1], "-1");
                     } else {
                         X10Map.put(address[1], "-1");

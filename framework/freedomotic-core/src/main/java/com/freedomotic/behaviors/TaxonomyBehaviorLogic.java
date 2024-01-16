@@ -92,7 +92,7 @@ public class TaxonomyBehaviorLogic
             //add the element id not already here
             listener.onAdd(params, fireCommand);
         } else {
-            if (value.equalsIgnoreCase("remove")) {
+            if ("remove".equalsIgnoreCase(value)) {
                 setUnselected(item);
                 listener.onRemove(params, fireCommand);
             } else {

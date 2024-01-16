@@ -153,11 +153,11 @@ public class i2c extends Protocol {
         address = c.getProperty("address").split(delimiter);
         int line = Integer.parseInt(address[1]);
         int value = 0;
-        if (c.getProperty("command").equals("TURN-ON")) {
+        if ("TURN-ON".equals(c.getProperty("command"))) {
             value = 1;
-        } else if (c.getProperty("command").equals("TURN-OFF")) {
+        } else if ("TURN-OFF".equals(c.getProperty("command"))) {
             value = 0;
-        } else if (c.getProperty("command").equals("SWITCH")) {
+        } else if ("SWITCH".equals(c.getProperty("command"))) {
             value = -1;
         }
 

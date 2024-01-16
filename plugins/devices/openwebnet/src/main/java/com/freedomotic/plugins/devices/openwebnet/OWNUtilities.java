@@ -214,7 +214,7 @@ public class OWNUtilities {
      */
     public static String convertTemperature(String temperature) {
         String temp = null;
-        if (!temperature.substring(0).equalsIgnoreCase("0")) {
+        if (!"0".equalsIgnoreCase(temperature.substring(0))) {
             temp = "-";
         }
         temp += temperature.substring(1, 2);

@@ -325,14 +325,14 @@ public class OneWire extends Protocol {
         //Freedomotic.logger.severe("k8055 address " + address);
         //add a property that defines the status readed from hardware
         //event.addProperty("relay.number", new Integer(relayLine).toString());
-        if (typeLine.equals("ID")) {
-            if (status.equals("0")) {
+        if ("ID".equals(typeLine)) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
             }
-        } else if (typeLine.equals("IA")) {
-            if (status.equals("0")) {
+        } else if ("IA".equals(typeLine)) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
                 event.addProperty("valueLine", status);
             } else {

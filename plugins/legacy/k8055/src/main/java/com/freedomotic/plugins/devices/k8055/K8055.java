@@ -238,12 +238,12 @@ public class K8055 extends Protocol {
                 + " with parameters " + c.getProperties().toString());
         String[] address = null;
         int brightness = 0;
-        if (c.getProperty("command").equals("RELAY")) {
+        if ("RELAY".equals(c.getProperty("command"))) {
 
             String delimiter = configuration.getProperty("address-delimiter");
             address = c.getProperty("address").split(delimiter);
 
-            if (c.getProperty("behavior").equals("on")) {
+            if ("on".equals(c.getProperty("behavior"))) {
                 setLineDevice(Integer.parseInt(address[2]), address[1], 100);
             } else {
                 resetLineDevice(Integer.parseInt(address[2]), address[1], 100);
@@ -274,14 +274,14 @@ public class K8055 extends Protocol {
         //LOG.severe("k8055 address " + address);
         //add a property that defines the status readed from hardware
         //event.addProperty("relay.number", new Integer(relayLine).toString());
-        if (typeLine.equals("ID")) {
-            if (status.equals("0")) {
+        if ("ID".equals(typeLine)) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
             }
-        } else if (typeLine.equals("IA")) {
-            if (status.equals("0")) {
+        } else if ("IA".equals(typeLine)) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
                 event.addProperty("valueLine", status);
             } else {
@@ -305,9 +305,9 @@ public class K8055 extends Protocol {
             jk8055 = JK8055.getInstance();
             jk8055.OpenDevice(DEVICE);
             LOG.info("k8055 plugin setLineDevice line:" + Integer.toString(line) + " typeLine: " + typeLine + " currentLine:" + currentLine);
-            if (typeLine.equals("OD")) {
+            if ("OD".equals(typeLine)) {
                 jk8055.SetDigitalChannel(line);
-            } else if (typeLine.equals("OA")) {
+            } else if ("OA".equals(typeLine)) {
                 jk8055.SetAnalogChannel(line);
             }
             jk8055.CloseDevice();
@@ -331,9 +331,9 @@ public class K8055 extends Protocol {
         try {
             jk8055 = JK8055.getInstance();
             jk8055.OpenDevice(DEVICE);
-            if (typeLine.equals("OD")) {
+            if ("OD".equals(typeLine)) {
                 jk8055.ClearDigitalChannel(line);
-            } else if (typeLine.equals("OA")) {
+            } else if ("OA".equals(typeLine)) {
                 jk8055.ClearAnalogChannel(line);
             }
             jk8055.CloseDevice();

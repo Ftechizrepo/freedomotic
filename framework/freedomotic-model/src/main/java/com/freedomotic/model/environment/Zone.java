@@ -235,7 +235,7 @@ public class Zone
      * @return the uuid of the zone
      */
     public String getUuid() {
-        if (uuid == null || uuid.equals("")) {
+        if (uuid == null || "".equals(uuid)) {
             this.uuid = UUID.randomUUID().toString();
         }
         return uuid;
@@ -247,7 +247,7 @@ public class Zone
      * @param uuid the uuid to set
      */
     public void setUuid(String uuid) {
-        if (uuid != null && !uuid.equals("")) {
+        if (uuid != null && !"".equals(uuid)) {
             this.uuid = uuid;
         }
     }

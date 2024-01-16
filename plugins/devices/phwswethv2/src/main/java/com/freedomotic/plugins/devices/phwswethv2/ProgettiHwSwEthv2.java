@@ -316,7 +316,7 @@ public class ProgettiHwSwEthv2 extends Protocol {
         ProtocolRead event = new ProtocolRead(this, "phwswethv2", address); //IP:PORT:RELAYLINE
         // relay lines - status=0 -> off; status=1 -> on
         if (tag.equalsIgnoreCase(board.getLedTag())) {
-            if (status.equals("0")) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
@@ -328,7 +328,7 @@ public class ProgettiHwSwEthv2 extends Protocol {
             }
         } else // digital input status = up -> off/open; status = dn -> on/closed
         if (tag.equalsIgnoreCase(board.getDigitalInputTag())) {
-            if (status.equalsIgnoreCase("up")) {
+            if ("up".equalsIgnoreCase(status)) {
                 event.addProperty("isOn", "false");
                 event.addProperty("isOpen", "true");
             } else {
@@ -343,7 +343,7 @@ public class ProgettiHwSwEthv2 extends Protocol {
         } else {
             // analog input status = 0 -> off; status > 0 -> on
             if (tag.equalsIgnoreCase(board.getAnalogInputTag())) {
-                if (status.equalsIgnoreCase("0")) {
+                if ("0".equalsIgnoreCase(status)) {
                     event.addProperty("isOn", "false");
                 } else {
                     event.addProperty("isOn", "true");
@@ -361,11 +361,11 @@ public class ProgettiHwSwEthv2 extends Protocol {
         String delimiter = configuration.getProperty("address-delimiter");
         address = c.getProperty("address").split(delimiter);
         Board board = (Board) devices.get(address[0]);
-        if (c.getProperty("command").equals("CHANGE-STATE-RELAY")) {
+        if ("CHANGE-STATE-RELAY".equals(c.getProperty("command"))) {
             changeRelayStatus(board, c);
         }
 
-        if (c.getProperty("command").equals("TOGGLE-RELAY")) {
+        if ("TOGGLE-RELAY".equals(c.getProperty("command"))) {
             toggleRelay(board, c);
         }
     }

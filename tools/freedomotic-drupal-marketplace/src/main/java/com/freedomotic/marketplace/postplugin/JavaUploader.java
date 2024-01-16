@@ -217,7 +217,7 @@ public class JavaUploader {
                 JsonReader reader = new JsonReader(new StringReader(jsonResponse));
                 reader.beginObject();
                 String jsonName = reader.nextName();
-                if (jsonName.equals("nid")) {
+                if ("nid".equals(jsonName)) {
                     nid = reader.nextString();
                 }
                 reader.close();

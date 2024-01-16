@@ -203,7 +203,7 @@ public class Flyport extends Protocol {
             int startingValue = board.getStartingValue();
             String lineToMonitorize = board.getLineToMonitorize();
             int linesNumber = 0;
-            if (lineToMonitorize.equalsIgnoreCase("led")) {
+            if ("led".equalsIgnoreCase(lineToMonitorize)) {
                 linesNumber = board.getLedNumber();
             }
             for (int i = startingValue; i <= linesNumber; i++) {
@@ -231,20 +231,20 @@ public class Flyport extends Protocol {
         ProtocolRead event = new ProtocolRead(this, "flyport", address); //IP:PORT:RELAYLINE
         // relay lines - status=0 -> off; status=1 -> on
         if (board.getLineToMonitorize().equalsIgnoreCase("led")) {
-            if (status.equals("0")) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
             }
         } else if (board.getLineToMonitorize().equalsIgnoreCase("btn")) {
-            if (status.equalsIgnoreCase("0")) {
+            if ("0".equalsIgnoreCase(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
             }
         } else {
             if (board.getLineToMonitorize().equalsIgnoreCase("pot")) {
-                if (status.equalsIgnoreCase("0")) {
+                if ("0".equalsIgnoreCase(status)) {
                     event.addProperty("isOn", "false");
                 } else {
                     event.addProperty("isOn", "true");
@@ -329,7 +329,7 @@ public class Flyport extends Protocol {
         String behavior = null;
         String relay = null;
 
-        if (c.getProperty("command").equals("RELAY")) {
+        if ("RELAY".equals(c.getProperty("command"))) {
             //relay = HexIntConverter.convert(Integer.parseInt(address[2]) - 1);
             relay = HexIntConverter.convert(Integer.parseInt(address[2]));
             page = "leds.cgi?led=" + relay;

@@ -232,7 +232,7 @@ public class Souliss extends Protocol {
         event.addProperty("souliss.val", val);
         switch (Integer.parseInt(typical)) {
             case 11:
-                if (val.equals("0")) {
+                if ("0".equals(val)) {
                     event.addProperty("isOn", "false");
                 } else {
                     event.addProperty("isOn", "true");

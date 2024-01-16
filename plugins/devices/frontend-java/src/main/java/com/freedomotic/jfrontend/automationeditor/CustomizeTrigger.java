@@ -110,7 +110,7 @@ public class CustomizeTrigger
             for (int k = 0; k < 4; k++) {
                 String test = model.getValueAt(r, 0).toString();
 
-                if ((test == null) || test.equals("")) {
+                if ((test == null) || "".equals(test)) {
                     saveCurrent = false;
 
                     break;

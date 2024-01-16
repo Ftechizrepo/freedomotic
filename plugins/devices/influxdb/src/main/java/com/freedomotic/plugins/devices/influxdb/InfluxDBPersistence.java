@@ -101,7 +101,7 @@ public class InfluxDBPersistence
         if (isRunning()) {
             if (c.getProperty("command") == null || c.getProperty("command").isEmpty() || c.getProperty("command").equalsIgnoreCase("SAVE-DATA")) {
                 saveData(c);
-            } else if (c.getProperty("command").equals("EXTRACT-DATA")) { //extract data
+            } else if ("EXTRACT-DATA".equals(c.getProperty("command"))) { //extract data
                 // TODO add data extraction procedure
             }
         }
@@ -188,7 +188,7 @@ public class InfluxDBPersistence
             for (Entry<Object, Object> entry : c.getProperties().entrySet()) {
                 String key = (String) entry.getKey();
                 Matcher fits = pat.matcher(key);
-                if (fits.find() && !fits.group(1).equals("data")) { //exclude unwanted behaviors
+                if (fits.find() && !"data".equals(fits.group(1))) { //exclude unwanted behaviors
                     String objBehavior = fits.group(1);
                     String behaviorValue = convertBehaviorValue((String) entry.getValue());
                     Point point = Point

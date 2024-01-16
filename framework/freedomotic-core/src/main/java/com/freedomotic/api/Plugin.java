@@ -512,7 +512,7 @@ public class Plugin implements Client, BusConsumer {
         String defaultQueue = ACTUATORS_QUEUE_DOMAIN + category + "." + shortName;
         String customizedQueue = ACTUATORS_QUEUE_DOMAIN + listenOn;
 
-        if (getReadQueue().equalsIgnoreCase(UNDEFINED)) {
+        if (UNDEFINED.equalsIgnoreCase(getReadQueue())) {
             listenOn = defaultQueue + ".in";
             return listenOn;
         } else {

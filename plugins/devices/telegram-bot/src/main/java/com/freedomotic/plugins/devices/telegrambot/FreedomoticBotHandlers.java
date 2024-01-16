@@ -132,7 +132,7 @@ public class FreedomoticBotHandlers extends TelegramLongPollingBot {
                 } else {
                     String[] input = message.getText().split(" ");
 
-                    if (input[0].equalsIgnoreCase("/start")) {
+                    if ("/start".equalsIgnoreCase(input[0])) {
                         mainMenu(message.getChatId().toString());
                     } else if (input[0].equalsIgnoreCase(i18n.msg("plugins").trim())) {
 
@@ -171,7 +171,7 @@ public class FreedomoticBotHandlers extends TelegramLongPollingBot {
             String action = data[1];
             String target = data[2];
 
-            if (section.equals("plugins")) {
+            if ("plugins".equals(section)) {
                 InlineKeyboardMarkup markup = null;
                 String startStr = "";
                 String responseToUser = "";
@@ -191,7 +191,7 @@ public class FreedomoticBotHandlers extends TelegramLongPollingBot {
                     case "start":
                         start = false;
                         startStr = "stopped";
-                        if (action.equals("start")) {
+                        if ("start".equals(action)) {
                             start = true;
                             startStr = "started";
                         }
@@ -279,7 +279,7 @@ public class FreedomoticBotHandlers extends TelegramLongPollingBot {
                     } catch (TelegramApiException e) {
                         e.printStackTrace();
                     }
-                } else if (action.equals("click")) {
+                } else if ("click".equals(action)) {
                     boolean response = false;
                     try {
                         response = this.clickThing(data[3]);

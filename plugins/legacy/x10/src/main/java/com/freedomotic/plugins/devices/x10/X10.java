@@ -70,7 +70,7 @@ public class X10 extends Protocol {
         X10AbstractGateway dev = getGateway();
         //if we have to set brightness we turn of the light and increase brightness one step at time
         //this is done because X10 protocol its hard to synch as it haven't good status request features
-        if (command.equalsIgnoreCase("BGT")) {
+        if ("BGT".equalsIgnoreCase(command)) {
             int value = Integer.parseInt(c.getProperty("x10.brightness.value"));
             int loops = value / 5;
             System.out.println("set brightness " + value + " in " + loops + " steps");

@@ -342,10 +342,10 @@ public class Recognizer {
                 utterance = stripQuotes(utterance);
                 confidence = stripQuotes(confidence);
 
-                if( utterance.equals("null") ) {
+                if( "null".equals(utterance) ) {
                     utterance = null;
                 }
-                if( confidence.equals("null") ) {
+                if( "null".equals(confidence) ) {
                     confidence = null;
                 }
 
@@ -354,7 +354,7 @@ public class Recognizer {
             } else {
                 String utterance = s.split(":")[1];
                 utterance = stripQuotes(utterance);
-                if( utterance.equals("null") ) {
+                if( "null".equals(utterance) ) {
                     utterance = null;
                 }
                 googleResponse.getOtherPossibleResponses().add(utterance);

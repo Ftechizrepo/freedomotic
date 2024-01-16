@@ -128,7 +128,7 @@ public class CronSchedule {
                 result[i] = new TimeSteps(parts[i]);
             } else if (parts[i].indexOf('-') > 0) {
                 result[i] = new TimeRange(parts[i]);
-            } else if (parts[i].equals("*")) {
+            } else if ("*".equals(parts[i])) {
                 result[i] = new TimeAll();
             } else {
                 result[i] = new SingleTimeValue(parts[i]);
@@ -510,7 +510,7 @@ public class CronSchedule {
             int divPos = def.indexOf('/');
             String r = def.substring(0, divPos);
 
-            if (r.equals("*")) {
+            if ("*".equals(r)) {
                 setRange(new TimeAll());
             } else if (r.indexOf('-') > 0) {
                 setRange(new TimeRange(r));

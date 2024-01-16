@@ -221,17 +221,17 @@ public class Ipx800 extends Protocol {
             try {
                 String tagName = tag + i;
                 // control for storing value
-                if (tag.equalsIgnoreCase("led")) {
+                if ("led".equalsIgnoreCase(tag)) {
                     if (!(board.getRelayStatus(i) == Integer.parseInt(doc.getElementsByTagName(tagName).item(0).getTextContent()))) {
                         sendChanges(i, board, doc.getElementsByTagName(tagName).item(0).getTextContent(), tag);
                         board.setRelayStatus(i, Integer.parseInt(doc.getElementsByTagName(tagName).item(0).getTextContent()));
                     }
-                } else if (tag.equalsIgnoreCase("btn")) {
+                } else if ("btn".equalsIgnoreCase(tag)) {
                     if (!(board.getDigitalInputValue(i).equalsIgnoreCase(doc.getElementsByTagName(tagName).item(0).getTextContent()))) {
                         sendChanges(i, board, doc.getElementsByTagName(tagName).item(0).getTextContent(), tag);
                         board.setDigitalInputValue(i, doc.getElementsByTagName(tagName).item(0).getTextContent());
                     }
-                } else if (tag.equalsIgnoreCase("an") || tag.equalsIgnoreCase("analog")) {
+                } else if ("an".equalsIgnoreCase(tag) || "analog".equalsIgnoreCase(tag)) {
                     if (!(board.getAnalogInputValue(i) == Integer.parseInt(doc.getElementsByTagName(tagName).item(0).getTextContent()))) {
                         sendChanges(i, board, doc.getElementsByTagName(tagName).item(0).getTextContent(), tag);
                         board.setAnalogInputValue(i, Integer.parseInt(doc.getElementsByTagName(tagName).item(0).getTextContent()));
@@ -252,9 +252,9 @@ public class Ipx800 extends Protocol {
         ProtocolRead event = new ProtocolRead(this, "ipx800", address);
         // relay lines - status=0 -> off; status=1 -> on
 
-        if (tag.equalsIgnoreCase("led")) {
+        if ("led".equalsIgnoreCase(tag)) {
             event.addProperty("inputValue", status);
-            if (status.equals("0")) {
+            if ("0".equals(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
@@ -265,8 +265,8 @@ public class Ipx800 extends Protocol {
                 }
             }
         } else // digital inputs (btn tag) status = up -> off; status = dn -> on
-        if (tag.equalsIgnoreCase("btn")) {
-            if (status.equalsIgnoreCase("up")) {
+        if ("btn".equalsIgnoreCase(tag)) {
+            if ("up".equalsIgnoreCase(status)) {
                 event.addProperty("isOn", "false");
             } else {
                 event.addProperty("isOn", "true");
@@ -274,8 +274,8 @@ public class Ipx800 extends Protocol {
             event.addProperty("inputValue", status);
         } else {
             // analog inputs (an/analog input) status = 0 -> off; status > 0 -> on
-            if (tag.equalsIgnoreCase("an") || tag.equalsIgnoreCase("analog")) {
-                if (status.equalsIgnoreCase("0")) {
+            if ("an".equalsIgnoreCase(tag) || "analog".equalsIgnoreCase(tag)) {
+                if ("0".equalsIgnoreCase(status)) {
                     event.addProperty("isOn", "false");
                 } else {
                     event.addProperty("isOn", "true");
@@ -310,7 +310,7 @@ public class Ipx800 extends Protocol {
             String[] address = c.getProperty("address").split(delimiter);
             Integer relayNumber = Integer.parseInt(address[1]) - 1;
 
-            if (c.getProperty("command").equals("CHANGE-STATE-DIGITAL-INPUT")) {
+            if ("CHANGE-STATE-DIGITAL-INPUT".equals(c.getProperty("command"))) {
                 relayNumber = relayNumber + 100;
             }
             // if required set the authentication

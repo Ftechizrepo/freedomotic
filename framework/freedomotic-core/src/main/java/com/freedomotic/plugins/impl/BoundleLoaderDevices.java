@@ -81,11 +81,11 @@ class BoundleLoaderDevices implements BoundleLoader {
     	
     	String classname = superclass.getName();
   
-		return classname.equals("com.freedomotic.api.Actuator")
-        || classname.equals("com.freedomotic.api.Sensor")
-        || classname.equals("com.freedomotic.api.Protocol")
-        || classname.equals("com.freedomotic.api.Intelligence")
-        || classname.equals("com.freedomotic.api.Tool");
+		return "com.freedomotic.api.Actuator".equals(classname)
+        || "com.freedomotic.api.Sensor".equals(classname)
+        || "com.freedomotic.api.Protocol".equals(classname)
+        || "com.freedomotic.api.Intelligence".equals(classname)
+        || "com.freedomotic.api.Tool".equals(classname);
     }
     
     private Plugin loadPlugin(Class<?> clazz) throws PluginLoadingException {

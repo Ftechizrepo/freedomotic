@@ -32,7 +32,7 @@ public class MarketPlaceValue {
     }
 
     public String formatValueAsListElement() {
-        if (value.equals("null")) {
+        if ("null".equals(value)) {
             return "";
         } else {
             return "\"" + value + "\":\"" + value + "\"";

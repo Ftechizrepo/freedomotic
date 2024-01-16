@@ -172,8 +172,8 @@ public class MySensors extends Protocol {
             LOG.info("Created thing \"{}\" with address {}:{}", objectClass, nodeID, childSensorID);
         }
         // adds isOn property only for lights
-        if (subType.equalsIgnoreCase("V_LIGHT")) {
-            if (payload.equalsIgnoreCase("1")) {
+        if ("V_LIGHT".equalsIgnoreCase(subType)) {
+            if ("1".equalsIgnoreCase(payload)) {
                 event.addProperty("sensor.isOn", "true");
             } else {
                 event.addProperty("sensor.isOn", "false");
@@ -196,10 +196,10 @@ public class MySensors extends Protocol {
         InternalSubType internalSubType = InternalSubType.I_ID_REQUEST;
         switch (internalSubType) {
             case I_ID_REQUEST:
-                if (nodeID.equalsIgnoreCase("255") && childSensorID.equalsIgnoreCase("255")) {
+                if ("255".equalsIgnoreCase(nodeID) && "255".equalsIgnoreCase(childSensorID)) {
                     // get a new available nodeID
                     String newNodeID = getAvailableNodeID();
-                    if (!newNodeID.equalsIgnoreCase("-1")) {
+                    if (!"-1".equalsIgnoreCase(newNodeID)) {
                         LOG.info("Node-ID assigned: {}", newNodeID);
                         sendMessage(nodeID, childSensorID, INTERNAL, ack, subType, newNodeID);
                     } else {

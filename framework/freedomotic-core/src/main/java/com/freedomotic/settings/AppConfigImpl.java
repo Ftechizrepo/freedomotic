@@ -100,10 +100,10 @@ class AppConfigImpl implements AppConfig {
         String result = properties.getProperty(key);
 
         if (result != null) {
-            if (result.trim().equalsIgnoreCase("true")) {
+            if ("true".equalsIgnoreCase(result.trim())) {
                 return true;
             } else {
-                if (result.trim().equalsIgnoreCase("false")) {
+                if ("false".equalsIgnoreCase(result.trim())) {
                     return false;
                 }
             }

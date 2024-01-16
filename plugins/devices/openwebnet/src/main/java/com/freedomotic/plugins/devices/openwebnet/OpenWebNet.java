@@ -161,17 +161,17 @@ public class OpenWebNet extends Protocol {
             return;
         }
 
-        if (frame.equals(OpenWebNet.MSG_OPEN_ACK)) {
+        if (OpenWebNet.MSG_OPEN_ACK.equals(frame)) {
             messageType = "ack";
             return;
         }
 
-        if (frame.equals(OpenWebNet.MSG_OPEN_NACK)) {
+        if (OpenWebNet.MSG_OPEN_NACK.equals(frame)) {
             messageType = "nack";
             return;
         }
 
-        if (frame.substring(0, 2).equalsIgnoreCase("*#")) {
+        if ("*#".equalsIgnoreCase(frame.substring(0, 2))) {
             // remove *# and ## 
             frame = frame.substring(2, frame.length() - 2);
             frameParts = frame.split("\\*"); // * is reserved so it must be escaped 
@@ -181,8 +181,8 @@ public class OpenWebNet extends Protocol {
             objectClass = null;
             objectName = who + "*" + where;
             event = new ProtocolRead(this, "openwebnet", who + "*" + where); // LIGHTING if (who.equalsIgnoreCase("1")) {
-            if (who.equalsIgnoreCase("1")) {
-                if (frameParts[2].equalsIgnoreCase("1")) {
+            if ("1".equalsIgnoreCase(who)) {
+                if ("1".equalsIgnoreCase(frameParts[2])) {
                     String level = frameParts[3];
                     String speed = frameParts[4];
                     messageDescription = "Luminous intensity change";
@@ -193,7 +193,7 @@ public class OpenWebNet extends Protocol {
                         event.getPayload().addStatement("speed", speed);
                     }
                 }
-                if (frameParts[2].equalsIgnoreCase("2")) {
+                if ("2".equalsIgnoreCase(frameParts[2])) {
                     String hour = frameParts[3];
                     String min = frameParts[4];
                     String sec = frameParts[5];
@@ -210,14 +210,14 @@ public class OpenWebNet extends Protocol {
                 }
             }
             // POWER MANAGEMENT - WHO=3
-            if (who.equalsIgnoreCase("3")) {
+            if ("3".equalsIgnoreCase(who)) {
                 //objectClass = "Powermeter";
                 //objectName = who + "*" + where;
                 String voltage = null;
                 String current = null;
                 String power = null;
                 String energy = null;
-                if (frameParts[3].equalsIgnoreCase("0")) {
+                if ("0".equalsIgnoreCase(frameParts[3])) {
                     voltage = frameParts[3];
                     current = frameParts[4];
                     power = frameParts[5];
@@ -236,28 +236,28 @@ public class OpenWebNet extends Protocol {
                         event.getPayload().addStatement("energy", energy);
                     }
                 }
-                if (frameParts[3].equalsIgnoreCase("1")) {
+                if ("1".equalsIgnoreCase(frameParts[3])) {
                     voltage = frameParts[3];
                     if (voltage != null) {
                         event.getPayload().addStatement("voltage", voltage);
                     }
                     messageDescription = "Voltage status";
                 }
-                if (frameParts[3].equalsIgnoreCase("2")) {
+                if ("2".equalsIgnoreCase(frameParts[3])) {
                     current = frameParts[3];
                     if (current != null) {
                         event.getPayload().addStatement("current", current);
                     }
                     messageDescription = "Current status";
                 }
-                if (frameParts[3].equalsIgnoreCase("3")) {
+                if ("3".equalsIgnoreCase(frameParts[3])) {
                     power = frameParts[3];
                     if (power != null) {
                         event.getPayload().addStatement("power", power);
                     }
                     messageDescription = "Power status";
                 }
-                if (frameParts[3].equalsIgnoreCase("4")) {
+                if ("4".equalsIgnoreCase(frameParts[3])) {
                     energy = frameParts[3];
                     if (energy != null) {
                         event.getPayload().addStatement("energy", energy);
@@ -266,7 +266,7 @@ public class OpenWebNet extends Protocol {
                 }
             }
             // TERMOREGULATION 
-            if (who.equalsIgnoreCase("4")) {
+            if ("4".equalsIgnoreCase(who)) {
                 String temperature = null;
                 String setpoint = null;
 
@@ -296,7 +296,7 @@ public class OpenWebNet extends Protocol {
             } // close TERMOREGULATION
 
             // GATEWAY CONTROL
-            if (who.equalsIgnoreCase("13")) {
+            if ("13".equalsIgnoreCase(who)) {
                 String hour = null;
                 String minute = null;
                 String second = null;
@@ -308,7 +308,7 @@ public class OpenWebNet extends Protocol {
                 String version = null;
                 String release = null;
                 String build = null;
-                if (frameParts[2].equalsIgnoreCase("0")) {
+                if ("0".equalsIgnoreCase(frameParts[2])) {
                     hour = frameParts[3];
                     minute = frameParts[4];
                     second = frameParts[5];
@@ -328,7 +328,7 @@ public class OpenWebNet extends Protocol {
                         event.getPayload().addStatement("timeZone", timeZone);
                     }
                 }
-                if (frameParts[2].equalsIgnoreCase("1")) {
+                if ("1".equalsIgnoreCase(frameParts[2])) {
                     dayWeek = OWNUtilities.dayName(frameParts[3]);
                     day = frameParts[4];
                     month = frameParts[5];
@@ -348,7 +348,7 @@ public class OpenWebNet extends Protocol {
                         event.getPayload().addStatement("year", year);
                     }
                 }
-                if (frameParts[2].equalsIgnoreCase("10")) {
+                if ("10".equalsIgnoreCase(frameParts[2])) {
                     String ip1 = frameParts[3];
                     String ip2 = frameParts[4];
                     String ip3 = frameParts[5];
@@ -357,7 +357,7 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "IP request";
                     event.getPayload().addStatement("ip-address", ip1 + "." + ip2 + "." + ip3 + "." + ip4);
                 }
-                if (frameParts[2].equalsIgnoreCase("11")) {
+                if ("11".equalsIgnoreCase(frameParts[2])) {
                     String netmask1 = frameParts[3];
                     String netmask2 = frameParts[4];
                     String netmask3 = frameParts[5];
@@ -366,7 +366,7 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "Netmask request";
                     event.getPayload().addStatement("netmask", netmask1 + "." + netmask2 + "." + netmask3 + "." + netmask4);
                 }
-                if (frameParts[2].equalsIgnoreCase("12")) {
+                if ("12".equalsIgnoreCase(frameParts[2])) {
                     String mac1 = frameParts[3];
                     String mac2 = frameParts[4];
                     String mac3 = frameParts[5];
@@ -377,13 +377,13 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "MAC request";
                     event.getPayload().addStatement("mac-address", mac1 + ":" + mac2 + ":" + mac3 + ":" + mac4 + ":" + mac5 + ":" + mac6);
                 }
-                if (frameParts[2].equalsIgnoreCase("15")) {
+                if ("15".equalsIgnoreCase(frameParts[2])) {
                     String model = OWNUtilities.gatewayModel(frameParts[3]);
                     messageType = "gatewayControl";
                     messageDescription = "Model request";
                     event.getPayload().addStatement("model", model);
                 }
-                if (frameParts[2].equalsIgnoreCase("16")) {
+                if ("16".equalsIgnoreCase(frameParts[2])) {
                     version = frameParts[3];
                     release = frameParts[4];
                     build = frameParts[5];
@@ -391,7 +391,7 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "Firmware version request";
                     event.getPayload().addStatement("firmware - version", version + "." + release + "." + build);
                 }
-                if (frameParts[2].equalsIgnoreCase("17")) {
+                if ("17".equalsIgnoreCase(frameParts[2])) {
                     String days = frameParts[3];
                     String hours = frameParts[4];
                     String minutes = frameParts[5];
@@ -400,7 +400,7 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "Uptime request";
                     event.getPayload().addStatement("uptime", days + "D:" + hours + "H:" + minutes + "m:" + seconds + "s");
                 }
-                if (frameParts[2].equalsIgnoreCase("22")) {
+                if ("22".equalsIgnoreCase(frameParts[2])) {
                     hour = frameParts[3];
                     minute = frameParts[4];
                     second = frameParts[5];
@@ -414,7 +414,7 @@ public class OpenWebNet extends Protocol {
                     event.getPayload().addStatement("date", weekDay + " " + day + "/" + month + "/" + year);
                     event.getPayload().addStatement("time", hour + ":" + minute + ":" + second);
                 }
-                if (frameParts[2].equalsIgnoreCase("23")) {
+                if ("23".equalsIgnoreCase(frameParts[2])) {
                     version = frameParts[3];
                     release = frameParts[4];
                     build = frameParts[5];
@@ -422,7 +422,7 @@ public class OpenWebNet extends Protocol {
                     messageDescription = "Kernel version request";
                     event.getPayload().addStatement("kernel - version", version + "." + release + "." + build);
                 }
-                if (frameParts[2].equalsIgnoreCase("24")) {
+                if ("24".equalsIgnoreCase(frameParts[2])) {
                     version = frameParts[3];
                     release = frameParts[4];
                     build = frameParts[5];
@@ -472,7 +472,7 @@ public class OpenWebNet extends Protocol {
                 case 1:
                     messageType = "Lighting";
                     objectClass = "Light";
-                    if ((where.length() > 1) && (!where.substring(1, 1).equalsIgnoreCase("#"))) {
+                    if ((where.length() > 1) && (!"#".equalsIgnoreCase(where.substring(1, 1)))) {
                         event.getPayload().addStatement("object.class", objectClass);
                     }
 

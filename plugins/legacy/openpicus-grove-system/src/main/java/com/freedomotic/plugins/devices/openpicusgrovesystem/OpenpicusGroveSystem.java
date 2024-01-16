@@ -92,9 +92,9 @@ public class OpenpicusGroveSystem extends Protocol {
         ProtocolRead event = new ProtocolRead(this, "openpicus-grove-system", objectAddress);
         event.addProperty("openpicus-grove-system.sensor.type", eventProperty);
         event.addProperty("openpicus-grove-system.sensor.value", eventValue);
-        if (eventProperty.equalsIgnoreCase("temperature")) {
+        if ("temperature".equalsIgnoreCase(eventProperty)) {
             event.addProperty("object.class", "Thermometer");
-        } else if (eventProperty.equalsIgnoreCase("luminosity")) {
+        } else if ("luminosity".equalsIgnoreCase(eventProperty)) {
             event.addProperty("object.class", "Light Sensor");
         }
         // EXTEND WITH MORE SENSORS

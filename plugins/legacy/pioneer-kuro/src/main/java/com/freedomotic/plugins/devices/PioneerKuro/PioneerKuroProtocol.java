@@ -166,8 +166,8 @@ public class PioneerKuroProtocol extends Protocol {
         String hardwareString = command;
 //        if (command.equals("PON") | command.equals("POF")) {
 //        }else 
-        if (command.equals("VOL")) {
-            if (parameter.equals("UPn") | parameter.equals("DWn")) {
+        if ("VOL".equals(command)) {
+            if ("UPn".equals(parameter) | "DWn".equals(parameter)) {
                 hardwareString += parameter;
             } else {
                 if (parameter.length() < 2) {
@@ -177,25 +177,25 @@ public class PioneerKuroProtocol extends Protocol {
                 }
                 hardwareString += parameter;
             }
-        } else if (command.equals("INC")) {
+        } else if ("INC".equals(command)) {
             if (parameter.length() < 2) {
                 hardwareString += "00";
             } else if (parameter.length() < 3) {
                 hardwareString += "0";
             }
             hardwareString += parameter;
-        } else if (command.equals("INP")) {
+        } else if ("INP".equals(command)) {
             hardwareString += "S" + parameter;
 //            if (parameter.split("Input ")[1].equals("6(PC)"))
 //                hardwareString += "S06";
 //            else
 //                hardwareString += "S0" + parameter.split("Input ")[1];        
 
-        } else if (command.equals("AMT")) {
+        } else if ("AMT".equals(command)) {
             hardwareString += parameter;
-        } else if (command.equals("CHN")) {
+        } else if ("CHN".equals(command)) {
             hardwareString += parameter;
-        } else if (command.equals("AVS")) {
+        } else if ("AVS".equals(command)) {
             hardwareString += "S" + parameter;
             //TODO: Use enum
 //            if (parameter.equals("STANDARD")) {
@@ -213,7 +213,7 @@ public class PioneerKuroProtocol extends Protocol {
 //            } else if (parameter.equals("USER")) {
 //                hardwareString += "S" + "07";
 //            }
-        } else if (command.equals("SZM")) {
+        } else if ("SZM".equals(command)) {
 
             hardwareString += "S" + parameter;
 //            if (parameter.equals("DOTbyDOT")) {
@@ -236,7 +236,7 @@ public class PioneerKuroProtocol extends Protocol {
 //                hardwareString += "S" + "07";
 //            } else if (parameter.equals("WIDE2")) {
 //                hardwareString += "S" + "07";
-        } else if (command.equals("RMC")) {
+        } else if ("RMC".equals(command)) {
             hardwareString += parameter;
 //            }
         }
@@ -263,10 +263,10 @@ public class PioneerKuroProtocol extends Protocol {
                 event.addProperty("power-value", "true");
                 this.notifyEvent(event);
                 String value = output.substring(4, 6);
-                if (value.equals("81")) {
+                if ("81".equals(value)) {
                     //analog
-                } else if (value.equals("83")) {//terrestrial
-                } else if (value.equals("84")) {//Digital
+                } else if ("83".equals(value)) {//terrestrial
+                } else if ("84".equals(value)) {//Digital
                 } else {
                     event = new ProtocolRead(this, "pioneer-kuro", "pioneer-kuro");
                     event.addProperty("hardware-behavior", "INP");

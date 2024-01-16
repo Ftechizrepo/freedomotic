@@ -341,7 +341,7 @@ public class Zwave4FD
          *
          * } else
          */
-        if (commandName != null && commandName.equalsIgnoreCase("INCLUDE-DEVICE")) {
+        if (commandName != null && "INCLUDE-DEVICE".equalsIgnoreCase(commandName)) {
             // code to let a Zwave device associate to the master 
             manager.cancelControllerCommand(homeId);
             LOG.info("Started accepting device inclusion request");
@@ -355,7 +355,7 @@ public class Zwave4FD
             };
             new Timer().schedule(tt, Long.parseLong(c.getProperty("timeout")));
 
-        } else if (commandName != null && commandName.equalsIgnoreCase("EXCLUDE-DEVICE")) {
+        } else if (commandName != null && "EXCLUDE-DEVICE".equalsIgnoreCase(commandName)) {
             // code to let or foce a device disconnect from master
             manager.cancelControllerCommand(homeId);
             LOG.info("Started accepting device exclusion request");

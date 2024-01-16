@@ -52,24 +52,24 @@ public class PluginRemoteController extends Protocol {
         String action = c.getProperty("action");
 
         if (plugin != null) {
-            if (action.equalsIgnoreCase("SHOW")) {
+            if ("SHOW".equalsIgnoreCase(action)) {
                 plugin.showGui();
             }
 
-            if (action.equalsIgnoreCase("HIDE")) {
+            if ("HIDE".equalsIgnoreCase(action)) {
                 plugin.hideGui();
             }
-            if (action.equalsIgnoreCase("STOP")) {
+            if ("STOP".equalsIgnoreCase(action)) {
                 if (plugin != this && getApi().getAuth().isPermitted("sys:plugins:stop")) {
                     plugin.stop();
                 }
             }
-            if (action.equalsIgnoreCase("START")) {
+            if ("START".equalsIgnoreCase(action)) {
                 if (plugin != this && getApi().getAuth().isPermitted("sys:plugins:start")) {
                     plugin.start();
                 }
             }
-            if (action.equalsIgnoreCase("RESTART")) {
+            if ("RESTART".equalsIgnoreCase(action)) {
                 if (plugin != this && getApi().getAuth().isPermitted("sys:plugins:stop") && getApi().getAuth().isPermitted("sys:plugins:start")) {
                     plugin.stop();
                     try {

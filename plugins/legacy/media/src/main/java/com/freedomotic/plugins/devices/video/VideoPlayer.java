@@ -77,7 +77,7 @@ public class VideoPlayer extends Protocol {
         if (close == null) {
             close = "no";
         }
-        if (close.equalsIgnoreCase("yes")) {
+        if ("yes".equalsIgnoreCase(close)) {
             try {
                 p.destroy();
             } catch (Exception e) {
