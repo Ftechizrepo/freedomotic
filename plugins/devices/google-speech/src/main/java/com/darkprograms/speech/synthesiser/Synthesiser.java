@@ -262,7 +262,9 @@ public class Synthesiser {
 				if(dashDetected){//If region is detected parses the whole string!
 					int lastQuote = rawData.substring(i+2).indexOf('"');//Where the region ends
 					if(lastQuote>0)
-						return rawData.substring(i+2,i+2+lastQuote);
+						{
+						    return rawData.substring(i+2,i+2+lastQuote);
+						}
 				}
 				else{
 					String possible = rawData.substring(i+2,i+4);
