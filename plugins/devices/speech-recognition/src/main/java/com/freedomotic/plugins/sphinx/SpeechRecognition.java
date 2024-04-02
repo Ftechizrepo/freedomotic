@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.file.Files;
 import java.util.Iterator;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -138,7 +139,7 @@ public class SpeechRecognition extends Protocol {
         File file = new File(Info.PATHS.PATH_DATA_FOLDER + "commands.gram2");
         System.out.println(file.getAbsolutePath());
         try {
-            output = new BufferedWriter(new FileWriter(file));
+            output = Files.newBufferedWriter(file.toPath());
             output.write(buffer.toString());
             output.close();
         } catch (IOException ex) {
