@@ -74,11 +74,11 @@ public class RestTestClient {
             JsonReader reader = new JsonReader(new StringReader(jsonResponse));
             reader.beginObject();
             String name = reader.nextName();
-            if (name.equals("sessid")) {
+            if ("sessid".equals(name)) {
                 session_id = reader.nextString();
             }
             name = reader.nextName();
-            if (name.equals("session_name")) {
+            if ("session_name".equals(name)) {
                 session_name = reader.nextString();
             }
             reader.close();
